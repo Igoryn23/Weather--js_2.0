@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenWeather</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <div class="header__logo">
+                    <span>Weather</span>
+                </div>
+                <div class="header__content">
+                    <h1>Получаем прогноз погоды по API</h1>
+                </div>
+            </div>
+
+        </div>
+    </header>
+    <section class="weather">
+        <div class="container">
+            <div class="weather__content">
+                <h2 class="weather__title">Current Weather Data</h2>
+                <div class="weather__inner">
+                    <div class="weather__select">
+                        <select id="city">
+                        <option value="625144">Minsk</option>
+                        <option value="524894">Moscow</option>
+                        <option value="703448">Kyiv</option>
+                        <option value="2643743">London</option>
+                        <option value="2968815">Paris</option>
+                        <option value="3067696">Prague</option>
+                        <option value="3169070">Rome</option>
+                        <option value="292223">Dubai</option>
+                    <option value="2147714">Sydney</option>
+                    <option value="6255152">Antarctica</option>
+                    </select>
+                    </div>
+                    <!-- /.weather__select -->
+                    <div class="weather__now">
+                        <div class="weather__head">
+                            <div class="out__city"></div>
+                            <div class="out__country"></div>
+                        </div>
+                        <!--  /.weather__head  -->
+                        <div class="weather__head">
+                            <div class="out__temp"></div>
+                            <div class="out__temp-f"></div>
+                            <div class="out__icon"></div>
+                        </div>
+                        <div class="weather__info">
+                            <div class="weather__info-content">Feels like
+                                <div class="out__feels out-common"></div>
+                            </div>
+                            <hr>
+                            <div class="weather__info-content">Humidity
+                                <div class="out__humidity out-common"></div>
+                            </div>
+                            <hr>
+                            <div class="weather__info-content">Pressure
+                                <div class="out__pressure out-common"></div>
+                            </div>
+                            <hr>
+                            <div class="weather__info-content">Wind
+                                <div class="out__wind out-common"></div>
+                            </div>
+                        </div>
+                        <!--  /.weather__info  -->
+                    </div>
+                    <div class="weather__now2">
+                        <div class="weather__info-2">
+                            <div class="weather__info-content">
+                                <div class="out__description"></div>
+                            </div>
+                            <hr>
+                            <div class="weather__info-content">Sunrise
+                                <div class="out__sunrise out-common"></div>
+                            </div>
+                            <hr>
+                            <div class="weather__info-content">Sunset
+                                <div class="out__sunset out-common"></div>
+                            </div>
+                            <hr>
+                            <div class="weather__info-content">Visibility
+                                <div class="out__visibility out-common"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--  /.weather__inner  -->
+            </div>
+
+        </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner"></div>
+        </div>
+    </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
