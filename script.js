@@ -15,7 +15,7 @@ const outSunset = document.querySelector('.out__sunset');
 const outVisibility = document.querySelector('.out__visibility');
 
 const outIcon = document.querySelector('.out__icon');
-
+console.log(outIcon);
 
 
 // выносим параметры в отдельный объект 
@@ -43,19 +43,23 @@ function showWeather(data) {
     let minutesSunrise = '0' + newSunrise.getMinutes();
     let formatSunrise = `${hoursSunrise}:${minutesSunrise.substr(-2)}`;
 
-    // SUNSET 
+    //блок для перевода Sunset 
     let unixSunset = (data.sys.sunset);
-    console.log(unixSunset);
     let newSunset = new Date(unixSunset * 1000);
     let hoursSunset = newSunset.getHours();
     let minutesSunset = '0' + newSunset.getMinutes();
     let formatSunset = `${hoursSunset}:${minutesSunset.substr(-2)}`;
 
+    // Timezone
+    let timezone = (data.timezone);
+    timezone = new Date(new Date().getTime()) - 25200 * 1000;
+
+
     // ВЫВОД на страницу 
     outCity.innerHTML = (data.name);
     outCountry.innerHTML = (data.sys.country);
     outTemp.innerHTML = Math.floor(data.main.temp - 273) + ' &degС';
-    outTempF.innerHTML = Math.floor((data.main.temp - 273) * 1.8 + 32) + ' &degF';
+    outTempF.innerHTML = Math.round((Math.floor(data.main.temp - 273) * 1.8) + 32) + ' &degF'; // фаренгейты 
 
     outFeels.innerHTML = Math.floor(data.main.feels_like - 273) + ' &degС';
     outHumidity.innerHTML = (data.main.humidity) + ' %';
@@ -66,12 +70,12 @@ function showWeather(data) {
     outSunset.innerHTML = formatSunset;
     outVisibility.textContent = (data.visibility) + ' Meters';
 
+    //http://openweathermap.org/img/wn/10d@2x.png   
+    //https://openweathermap.org/img/wn/
+    outIcon.innerHTML = `<img src='https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png'>`;
 
     console.log(data);
-
-
-
-
+    console.log(data.weather[0]['icon']);
 }
 
 getWeather();

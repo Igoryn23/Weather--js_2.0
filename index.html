@@ -20,7 +20,6 @@
                     <h1>Получаем прогноз погоды по API</h1>
                 </div>
             </div>
-
         </div>
     </header>
     <section class="weather">
@@ -29,17 +28,22 @@
                 <h2 class="weather__title">Current Weather Data</h2>
                 <div class="weather__inner">
                     <div class="weather__select">
+                        <p class="weather__select-title">Выберите город</p>
                         <select id="city">
                         <option value="625144">Minsk</option>
                         <option value="524894">Moscow</option>
                         <option value="703448">Kyiv</option>
-                        <option value="2643743">London</option>
+                        <option value="3143244">Oslo</option>
                         <option value="2968815">Paris</option>
+                        <option value="2800866">Brussels</option>
                         <option value="3067696">Prague</option>
                         <option value="3169070">Rome</option>
+                        <option value="360630">Cairo</option>
                         <option value="292223">Dubai</option>
-                    <option value="2147714">Sydney</option>
-                    <option value="6255152">Antarctica</option>
+                        <option value="2147714">Sydney</option>
+                        <option value="6094817">Ottawa</option>
+                        <option value="2122311">Oymyakon</option>
+                        
                     </select>
                     </div>
                     <!-- /.weather__select -->
@@ -52,7 +56,6 @@
                         <div class="weather__head">
                             <div class="out__temp"></div>
                             <div class="out__temp-f"></div>
-                            <div class="out__icon"></div>
                         </div>
                         <div class="weather__info">
                             <div class="weather__info-content">Feels like
@@ -73,9 +76,13 @@
                         </div>
                         <!--  /.weather__info  -->
                     </div>
+                    <!--  /.weather__now  -->
                     <div class="weather__now2">
                         <div class="weather__info-2">
-                            <div class="weather__info-content">
+                            <div class="weather__info-content weather__no-padding">
+                                <div class="out__icon"></div>
+                            </div>
+                            <div class="weather__info-content weather__no-padding">
                                 <div class="out__description"></div>
                             </div>
                             <hr>
@@ -92,6 +99,7 @@
                             </div>
                         </div>
                     </div>
+                    <!--  /.weather__now2  -->
                 </div>
                 <!--  /.weather__inner  -->
             </div>
@@ -99,12 +107,6 @@
         </div>
         </div>
     </section>
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__inner"></div>
-        </div>
-    </footer>
-    </div>
     <script src="script.js"></script>
 </body>
 
