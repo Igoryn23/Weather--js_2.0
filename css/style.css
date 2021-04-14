@@ -85,10 +85,6 @@
     align-items: center;
 }
 
-.weather__info-2 {}
-
-.weather__icon {}
-
 .out__city {
     padding-right: 20px;
     font-size: 30px;
@@ -149,4 +145,17 @@
 
 .out__icon {
     text-align: center;
+}
+
+.out__wind {
+    display: inline-block;
+    font-weight: 600;
+    padding-left: 100px;
+}
+
+.out__deg {
+    display: inline-block;
+    font-weight: 600;
+    padding-left: 20px;
+    color: rgb(134, 1, 1);
 }

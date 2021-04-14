@@ -1,4 +1,4 @@
-// переменные для данных 
+// получаем out со страницы  
 const outCity = document.querySelector('.out__city');
 const outCountry = document.querySelector('.out__country');
 
@@ -9,14 +9,13 @@ const outFeels = document.querySelector('.out__feels');
 const outHumidity = document.querySelector('.out__humidity');
 const outPressure = document.querySelector('.out__pressure');
 const outWind = document.querySelector('.out__wind');
+const outDeg = document.querySelector('.out__deg');
 const outDescription = document.querySelector('.out__description');
 const outSunrise = document.querySelector('.out__sunrise');
 const outSunset = document.querySelector('.out__sunset');
 const outVisibility = document.querySelector('.out__visibility');
 
-const outIcon = document.querySelector('.out__icon');
-console.log(outIcon);
-
+const outIcon = document.querySelector('.out__icon'); // иконка 
 
 // выносим параметры в отдельный объект 
 const param = {
@@ -33,27 +32,42 @@ function getWeather() {
         .then(showWeather); // показываем полученную погоды 
 }
 
-// функция вывода на страницу 
-function showWeather(data) {
 
-    //блок для перевода Sunrise  
-    let unixSunrise = (data.sys.sunrise);
+// getSunrise 
+function getSunrise(num) {
+    let unixSunrise = num;
     let newSunrise = new Date(unixSunrise * 1000);
     let hoursSunrise = newSunrise.getHours();
     let minutesSunrise = '0' + newSunrise.getMinutes();
     let formatSunrise = `${hoursSunrise}:${minutesSunrise.substr(-2)}`;
+    return formatSunrise;
+}
 
-    //блок для перевода Sunset 
-    let unixSunset = (data.sys.sunset);
+// getSunset 
+function getSunset(num) {
+    let unixSunset = (num);
     let newSunset = new Date(unixSunset * 1000);
     let hoursSunset = newSunset.getHours();
     let minutesSunset = '0' + newSunset.getMinutes();
     let formatSunset = `${hoursSunset}:${minutesSunset.substr(-2)}`;
+    return formatSunset;
+}
 
-    // Timezone
-    let timezone = (data.timezone);
-    timezone = new Date(new Date().getTime()) - 25200 * 1000;
+// wind deg 
+function getWind(num) {
+    let val = Math.floor((num / 22.5) + 0.5);
+    let arr_deg = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"];
+    let deg = arr_deg[(val % 16)];
+    return deg;
+}
 
+// функция вывода на страницу 
+function showWeather(data) {
+
+    // перевод sunrise, sunset, wind deg 
+    let formatSunrise = getSunrise(data.sys.sunrise);
+    let formatSunset = getSunset(data.sys.sunset);
+    let windDeg = getWind(data.wind.deg);
 
     // ВЫВОД на страницу 
     outCity.innerHTML = (data.name);
@@ -65,18 +79,18 @@ function showWeather(data) {
     outHumidity.innerHTML = (data.main.humidity) + ' %';
     outPressure.innerHTML = Math.floor((data.main.pressure) / 1.33) + ' mmHg';
     outWind.innerHTML = (data.wind.speed) + ' m/s';
+    outDeg.innerHTML = (windDeg);
     outDescription.textContent = (data.weather[0]['description']);
     outSunrise.innerHTML = formatSunrise;
     outSunset.innerHTML = formatSunset;
     outVisibility.textContent = (data.visibility) + ' Meters';
 
     //http://openweathermap.org/img/wn/10d@2x.png   
-    //https://openweathermap.org/img/wn/
     outIcon.innerHTML = `<img src='https://openweathermap.org/img/wn/${data.weather[0]['icon']}@2x.png'>`;
 
     console.log(data);
-    console.log(data.weather[0]['icon']);
 }
 
 getWeather();
+// запуск функции при изменении select 
 document.querySelector('#city').onchange = getWeather;
